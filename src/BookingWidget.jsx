@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import {differenceInCalendarDays} from "date-fns";
 import axios from "axios";
-import { Navigate,useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function BookingWidget({place}){
-    const navigate = useNavigation();
+    const navigate = useNavigate();
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState(1);
