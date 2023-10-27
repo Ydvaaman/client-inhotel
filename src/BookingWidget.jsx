@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import {differenceInCalendarDays} from "date-fns";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate,useNavigation } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function BookingWidget({place}){
+    const navigate = useNavigation();
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -34,13 +35,15 @@ export default function BookingWidget({place}){
     });
     console.log(response);
     const bookingId = response.data._id;
-    // setRedirect(`/account/bookings/${bookingId}`);
+    setRedirect(`/account/bookings/${bookingId}`);
     }
-
-    if(redirect){
-        return <Navigate to={redirect}/>
-    }
-
+    useEffect(()=>{
+        if(redirect){
+            // return <Navigate to={redirect}/>
+            navigate(redirect)
+        }
+    },[redirect])
+    
     return(
         <div className="bg-white shadow p-4 rounded-2xl">
         <div className="text-2xl text-center">
