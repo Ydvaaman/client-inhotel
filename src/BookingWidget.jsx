@@ -35,14 +35,9 @@ export default function BookingWidget({place}){
     });
     console.log(response);
     const bookingId = response.data._id;
-    setRedirect(`/account/bookingsPage/${bookingId}`);
+    navigate(`/account/bookings/${bookingId}`);
     }
-    useEffect(()=>{
-        if(redirect){
-            // return <Navigate to={redirect}/>
-            navigate(redirect)
-        }
-    },[redirect])
+    
     
     return(
         <div className="bg-white shadow p-4 rounded-2xl">
