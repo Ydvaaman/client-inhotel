@@ -23,16 +23,18 @@ export default function BookingWidget({place}){
     if(checkIn && checkOut){
         numberOfNights = differenceInCalendarDays(new Date(checkOut),new Date(checkIn));
     }
-console.log(user);
+
    async function bookThisPlace() { 
      const response =  await axios.post('https://inhotel.onrender.com/bookings',{
         checkIn, checkOut, numberOfGuests, name, phone,
         place:place._id,
         price:numberOfNights * place.price,
-        email:localStorage.getItem("email")
+        email:user.email
+        
     });
+    console.log(response);
     const bookingId = response.data._id;
-    setRedirect(`/account/bookings/${bookingId}`);
+    // setRedirect(`/account/bookings/${bookingId}`);
     }
 
     if(redirect){
