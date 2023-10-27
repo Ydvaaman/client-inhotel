@@ -9,7 +9,7 @@ export default function PlacesPage(){
     
     const [places, setPlaces] = useState([]);
     useEffect(() => {
-        axios.get('https://inhotel.onrender.com/user-places').then(({data}) => {
+        axios.post('https://inhotel.onrender.com/user-places',{email:localStorage.getItem("email")}).then(({data}) => {
             setPlaces(data);
         });
     },[]);

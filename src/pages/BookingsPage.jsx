@@ -9,7 +9,7 @@ import BookingDates from "../BookingDates";
 export default function BookingsPage() {
     const[bookings, setBookings] = useState([]);
     useEffect(() => {
-        axios.get('https://inhotel.onrender.com/bookings').then(response => {
+        axios.post('https://inhotel.onrender.com/bookingss',{email:localStorage.getItem("email")}).then(response => {
             setBookings(response.data);
         });
     },[]);

@@ -10,7 +10,8 @@ export default function BookingPage() {
     const [booking, setBooking] = useState(null);
     useEffect(() => {
         if(id){
-            axios.get('https://inhotel.onrender.com/bookings').then(response => {
+            axios.post('https://inhotel.onrender.com/bookingss',{email:localStorage.getItem("email")}).then(response => {
+                console.log(response);
                 const foundBooking = response.data.find(({_id}) => _id === id);
                 if(foundBooking){
                     setBooking(foundBooking);
@@ -20,7 +21,7 @@ export default function BookingPage() {
     },[id]);
 
     if(!booking){
-        return '';
+        return <h1>Hello world</h1>;
     }
     return (
         <div className="my-8">
