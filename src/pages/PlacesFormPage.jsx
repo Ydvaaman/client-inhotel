@@ -4,7 +4,6 @@ import PhotosUploader from "../PhotosUploader";
 import axios from "axios";
 import AccountNav from "../AccountNav";
 import { Navigate, useParams } from "react-router-dom";
-axios.defaults.withCredentials = true;
 export default function PlacesFormPage() {
     const {id} = useParams();
     // console.log(id);
@@ -23,7 +22,7 @@ export default function PlacesFormPage() {
         if(!id) {
             return;
         }
-        axios.get('/places/'+id).then(response => {
+        axios.get('https://inhotel.onrender.com/places/'+id).then(response => {
             const {data} = response;
             setTitle(data.title);
             setAddress(data.address);
@@ -65,14 +64,14 @@ export default function PlacesFormPage() {
         };
         if(id){
             //update
-            await axios.put('/places', {
+            await axios.put('https://inhotel.onrender.com/places', {
                 id,...placeData
                 
             });
             setRedirect(true);
         }else{
             //new place
-            await axios.post('/places', placeData)
+            await axios.post('https://inhotel.onrender.com/places', placeData)
             setRedirect(true);
         }
         

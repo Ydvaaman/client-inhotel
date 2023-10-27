@@ -10,7 +10,7 @@ export function UserContextProvider({children}){
     const [ready,setReady] = useState(false);
     useEffect(() =>{
         if(!user){
-        axios.get('/profile').then(({data})=>{
+        axios.get('https://inhotel.onrender.com/profile').then(({data})=>{
             setUser(data);
             setReady(true);
         });

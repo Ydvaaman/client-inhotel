@@ -11,7 +11,7 @@ export default function LoginPage() {
   async function handleLoginSubmit(ev){
     ev.preventDefault();
     try{
-        const res = await axios.post('/login',{email,password});
+        const res = await axios.post('https://inhotel.onrender.com/login',{email,password});
         const {data}=res;
         setUser(data);
         // console.log(res)
