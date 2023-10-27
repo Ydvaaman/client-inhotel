@@ -13,6 +13,7 @@ export default function LoginPage() {
     try{
         const res = await axios.post('https://inhotel.onrender.com/login',{email,password});
         const {data}=res;
+        localStorage.setItem("email",email)
         setUser(data);
         // console.log(res)
         alert('Login successfull');
